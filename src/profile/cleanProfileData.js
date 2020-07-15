@@ -93,7 +93,9 @@ module.exports = (profile) => {
   }
 
   if(profile.projects){
-    profile.projects = profile.projects.map(
+    profile.projects = profile.projects.filter(
+      ({ name, description }) => name !== undefined && description !== undefined
+    ).map(
       ({ name, date, description, link }) => ({
         name: name.replace('Project name\n', ''),
         date,
