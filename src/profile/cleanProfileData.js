@@ -79,7 +79,7 @@ module.exports = (profile) => {
   }
 
   if(profile.courses){
-    profile.courses = profile.courses.map(({ name, year }) => ({
+    profile.courses = profile.courses.filter(({ name, year }) => name !== undefined && year !== undefined).map(({ name, year }) => ({
       name: name.replace('Course name\n', ''),
       year: year.replace('Course number\n', ''),
     }));
